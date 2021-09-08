@@ -22,25 +22,24 @@ SELECT * FROM tbl_movies;
 
 CREATE TABLE tbl_director (
 	director_id INT PRIMARY KEY NOT NULL IDENTITY(1,1), 
-	director_name VARCHAR(50) NOT NULL, 
-	director_movie INT CONSTRAINT fk_movie_id FOREIGN KEY REFERENCES tbl_movies(movie_id) ON UPDATE CASCADE ON DELETE CASCADE, 
+	director_name VARCHAR (50) NOT NULL,
+	director_movie INT NOT NULL CONSTRAINT fk_movie_id FOREIGN KEY REFERENCES tbl_movies(movie_id) ON UPDATE CASCADE ON DELETE CASCADE,
 	director_cost MONEY NOT NULL 
 ); 
 SELECT * FROM tbl_director
+
+
 
 INSERT INTO tbl_director 
 (director_name, director_movie, director_cost)
 VALUES
 ('Aloyna Smith', 5, 150000),
 ('Jacquelyn Harris', 4, 340000),
-('Robert T.', 1, 130000),
+('Robert T.',1, 130000),
 ('Andy Yang', 3, 540000),
 ('Ulysses G.', 2, 350000)
 ;
 
-SELECT 
-	a1. director_name
-	FROM tbl_director a1
-	INNER JOIN tbl_movies a2 ON a2.movie_id = a1.director_name
-;
-	
+SELECT tbl_director.director_movie
+FROM tbl_director 
+INNER JOIN tbl_movies on tbl_movies.movie_id = tbl_director.director_movie  
