@@ -1,4 +1,4 @@
-CREATE DATABASE db_movie
+USE db_movie
 
 CREATE TABLE tbl_movies (
 	movie_id INT PRIMARY KEY NOT NULL IDENTITY (1,1), 
@@ -40,6 +40,8 @@ VALUES
 ('Ulysses G.', 2, 350000)
 ;
 
-SELECT tbl_director.director_movie
+SELECT director_movie, director_name, director_cost, movie_actor, movie_name, movie_genre
 FROM tbl_director 
 INNER JOIN tbl_movies on tbl_movies.movie_id = tbl_director.director_movie  
+
+SELECT * FROM tbl_director
